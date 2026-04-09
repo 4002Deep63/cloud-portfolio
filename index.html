@@ -69,7 +69,7 @@
 
         h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
             margin-bottom: 20px;
             line-height: 1.1;
         }
@@ -87,9 +87,13 @@
 
         .profile-img-wrapper {
             position: relative;
-            width: clamp(200px, 25vw, 350px);
-            height: clamp(200px, 25vw, 350px);
+            width: clamp(200px, 30vw, 350px);
+            height: clamp(200px, 30vw, 350px);
             flex-shrink: 0;
+            /* Light contrast applied here */
+            background-color: #2a2a4a;
+            border-radius: 50%;
+            padding: 10px; /* Optional, for spacing */
         }
 
         .profile-img {
@@ -101,24 +105,25 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* --- SECTIONS --- */
+        /* --- INFO & SKILLS --- */
         section {
             padding: 80px 10%;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            align-items: start;
+            align-items: stretch;
         }
 
         .info-card {
             background: var(--card-bg);
-            padding: clamp(20px, 5%, 40px);
+            padding: 40px;
             border-radius: 20px;
             border: 1px solid var(--border-rgba);
-            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .info-card h3 {
@@ -128,6 +133,38 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* Technical Skills Specific Grid */
+        .tech-skills-icon-grid {
+            display: grid;
+            /* Updated grid for 6 boxes */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .tech-skill-icon-box {
+            background-color: #12122b;
+            color: var(--text-white);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .tech-skill-icon-box:hover {
+            transform: translateY(-5px);
+            background-color: #1a1a3a;
+            border-color: var(--purple-primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .skill-group {
@@ -144,34 +181,6 @@
             border-radius: 5px;
             font-size: 0.85rem;
             color: var(--purple-light);
-        }
-
-        /* --- TECHNICAL SKILLS ICON GRID --- */
-        .tech-skills-icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .tech-skill-icon-box {
-            background-color: #12122b;
-            color: var(--text-white);
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1;
-            transition: 0.3s;
-        }
-
-        .tech-skill-icon-box:hover {
-            transform: scale(1.05);
-            background-color: #1a1a3a;
         }
 
         /* --- PROJECTS --- */
@@ -201,7 +210,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
@@ -215,25 +224,76 @@
             transition: 0.3s;
         }
 
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--purple-primary);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--purple-primary);
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .project-card ul li::before {
+            content: '▹';
+            color: var(--purple-primary);
+            margin-right: 8px;
+        }
+
+        .project-tech {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-code {
+            text-decoration: none;
+            color: var(--text-white);
+            background: var(--purple-primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.3s;
+        }
+
         /* --- PROFESSIONAL VALUE --- */
         .hire-me-content {
             background: linear-gradient(135deg, #161632 0%, #0f0f1e 100%);
-            padding: clamp(20px, 5%, 50px);
+            padding: clamp(30px, 5vw, 50px);
             border-radius: 30px;
             border: 1px solid var(--border-rgba);
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
 
         .hire-list {
             list-style: none;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .hire-list li {
-            margin-bottom: 12px;
-            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
             display: flex;
             gap: 12px;
             color: var(--text-gray);
@@ -249,8 +309,8 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            padding: 30px 10%;
+            gap: 30px;
+            padding: 40px 10%;
             background: var(--card-bg);
             border-top: 1px solid var(--border-rgba);
             margin-top: auto;
@@ -259,68 +319,42 @@
         .contact-item {
             color: var(--text-white);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: 0.3s;
-            white-space: nowrap;
         }
 
-        /* --- MEDIA QUERIES --- */
+        .contact-item:hover {
+            color: var(--purple-primary);
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 1024px) {
-            section, .hero {
-                padding: 60px 5%;
-            }
-            .hire-me-content {
-                grid-template-columns: 1fr;
-            }
+            section, .hero { padding: 60px 5%; }
         }
 
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column-reverse;
                 text-align: center;
-                padding-top: 40px;
             }
-            .hero-text {
-                margin: 0 auto 30px auto;
-            }
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-text { margin: 0 auto 30px; }
             .tech-skills-icon-grid {
+                /* For smaller screens, adjust grid to prevent overflow */
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2.2rem; }
-            .contact-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
             .tech-skills-icon-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .btn-code {
-                width: 100%;
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
             }
-        }
-        
-        /* Utility for the buttons */
-        .btn-code {
-            margin-top: 20px;
-            text-decoration: none;
-            color: var(--text-white);
-            background: var(--purple-primary);
-            padding: 10px 18px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-align: center;
-            display: inline-block;
         }
     </style>
 </head>
@@ -387,16 +421,17 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>AWS S3 Static Website</h3>
-                    <p>Hosted a responsive static website using AWS S3 cloud storage.</p>
+                    <p>Hosted a responsive static website using AWS S3 cloud storage with custom bucket policies.</p>
                     <ul>
                         <li>Configured Bucket Policies</li>
                         <li>Enabled Static Hosting</li>
                     </ul>
                     <span class="project-tech">AWS S3</span>
                 </div>
+                
                 <div class="project-card">
                     <h3>EC2 + NGINX Web Server</h3>
-                    <p>Deployed a live web server on an Ubuntu EC2 instance.</p>
+                    <p>Deployed a live web server on an Ubuntu EC2 instance with secured SSH access.</p>
                     <ul>
                         <li>Launched EC2 instances</li>
                         <li>Secured SSH access</li>
@@ -404,9 +439,10 @@
                     <span class="project-tech">AWS EC2, NGINX, Linux</span>
                     <a href="https://github.com/4002Deep63/aws-ec2-nginx-website" target="_blank" class="btn-code"><i class="fa-brands fa-github"></i> View Code</a>
                 </div>
+
                 <div class="project-card">
                     <h3>S3 + Lambda Automation</h3>
-                    <p>Built a serverless automation system triggered by S3 events.</p>
+                    <p>Built a serverless automation system triggered by real-time S3 upload events.</p>
                     <ul>
                         <li>Event-driven triggers</li>
                         <li>Python Lambda logic</li>
@@ -423,28 +459,26 @@
             </div>
             <div class="hire-me-content">
                 <div class="hire-me-text">
-                    <h3>Why Hire Me?</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-gray);">
-                        I am a passionate Cloud Computing enthusiast with hands-on experience in building and deploying AWS-based solutions. I focus on practical implementation and continuously enhance my skills in cloud infrastructure.
+                    <h3 style="color: var(--purple-primary); margin-bottom: 10px;">Why Hire Me?</h3>
+                    <p style="color: var(--text-gray);">
+                        I focus on practical, scalable cloud implementation. I bridge the gap between BTech theory and real-world AWS infrastructure.
                     </p>
-                    
-                    <span class="highlight-title" style="color: var(--accent-cyan); font-weight: 600; display: block; margin-top: 20px;">Key Highlights:</span>
                     <ul class="hire-list">
-                        <li><i class="fa-solid fa-cloud"></i> Built cloud projects using AWS (S3, EC2, Lambda)</li>
-                        <li><i class="fa-solid fa-terminal"></i> Strong practical knowledge of AWS & Linux systems</li>
-                        <li><i class="fa-solid fa-graduation-cap"></i> 2-Month Hybrid Internship & 15+ Hour Upskilling Course</li>
-                        <li><i class="fa-solid fa-certificate"></i> Certified in LLM for Developers</li>
+                        <li><i class="fa-solid fa-cloud"></i> Hands-on AWS (S3, EC2, Lambda)</li>
+                        <li><i class="fa-solid fa-terminal"></i> Practical Linux Administration</li>
+                        <li><i class="fa-solid fa-graduation-cap"></i> 2-Month Hybrid Cloud Internship</li>
+                        <li><i class="fa-solid fa-certificate"></i> Certified LLM for Developers</li>
                     </ul>
                 </div>
                 <div>
-                    <span class="highlight-title" style="color: var(--accent-cyan); font-weight: 600; display: block; margin-bottom: 10px;">Skills & Strengths:</span>
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 10px;">Strengths</h3>
                     <ul class="hire-list">
-                        <li><i class="fa-solid fa-bolt"></i> Strong problem-solving & analytical thinking</li>
-                        <li><i class="fa-solid fa-users-gear"></i> Adaptability in real-world environments</li>
-                        <li><i class="fa-solid fa-diagram-project"></i> Good understanding of scalable system design</li>
-                        <li><i class="fa-solid fa-sync"></i> Continuous learner with interest in DevOps</li>
+                        <li><i class="fa-solid fa-bolt"></i> Analytical Problem Solving</li>
+                        <li><i class="fa-solid fa-users-gear"></i> Highly Adaptable</li>
+                        <li><i class="fa-solid fa-diagram-project"></i> Scalable System Design</li>
+                        <li><i class="fa-solid fa-sync"></i> DevOps & Continuous Learning</li>
                     </ul>
-                    <p style="margin-top: 30px; font-weight: 700; color: var(--accent-cyan); text-align: center; font-size: 0.9rem;">
+                    <p style="margin-top: 25px; font-weight: 700; color: var(--accent-cyan); text-align: center;">
                         Ready to contribute as a Cloud Engineer.
                     </p>
                 </div>
