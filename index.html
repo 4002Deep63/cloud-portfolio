@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Lad | Cloud Computing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f0f1e;
+            --card-bg: #161632;
+            --purple-primary: #8a70e8;
+            --purple-light: #a38ff3;
+            --text-white: #ffffff;
+            --text-gray: #b0b0cc;
+            --accent-cyan: #4cc9f0;
+            --border-rgba: rgba(138, 112, 232, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            background: radial-gradient(circle at top right, rgba(138, 112, 232, 0.15), transparent);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .badge {
+            background: var(--purple-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        h1 span {
+            color: var(--purple-primary);
+        }
+
+        .hero-text {
+            font-size: 1rem;
+            color: var(--text-gray);
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: clamp(200px, 25vw, 350px);
+            height: clamp(200px, 25vw, 350px);
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 80px 10%;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: clamp(20px, 5%, 40px);
+            border-radius: 20px;
+            border: 1px solid var(--border-rgba);
+            height: 100%;
+        }
+
+        .info-card h3 {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .skill-tag {
+            background: rgba(138, 112, 232, 0.1);
+            border: 1px solid var(--border-rgba);
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: var(--purple-light);
+        }
+
+        /* --- TECHNICAL SKILLS ICON GRID --- */
+        .tech-skills-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tech-skill-icon-box {
+            background-color: #12122b;
+            color: var(--text-white);
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            transition: 0.3s;
+        }
+
+        .tech-skill-icon-box:hover {
+            transform: scale(1.05);
+            background-color: #1a1a3a;
+        }
+
+        /* --- PROJECTS --- */
+        .section-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--purple-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--border-rgba);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        /* --- PROFESSIONAL VALUE --- */
+        .hire-me-content {
+            background: linear-gradient(135deg, #161632 0%, #0f0f1e 100%);
+            padding: clamp(20px, 5%, 50px);
+            border-radius: 30px;
+            border: 1px solid var(--border-rgba);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+        }
+
+        .hire-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .hire-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 12px;
+            color: var(--text-gray);
+        }
+
+        .hire-list i {
+            color: var(--accent-cyan);
+            margin-top: 4px;
+        }
+
+        /* --- CONTACT BAR --- */
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px 10%;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-rgba);
+            margin-top: auto;
+        }
+
+        .contact-item {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            section, .hero {
+                padding: 60px 5%;
+            }
+            .hire-me-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-text {
+                margin: 0 auto 30px auto;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .tech-skills-icon-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .contact-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .tech-skills-icon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .btn-code {
+                width: 100%;
+            }
+        }
+        
+        /* Utility for the buttons */
+        .btn-code {
+            margin-top: 20px;
+            text-decoration: none;
+            color: var(--text-white);
+            background: var(--purple-primary);
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <span class="badge">Cloud Solutions Enthusiast</span>
+                <h1>Hi, I’m <span>Deep Lad</span></h1>
+                <p class="hero-text">
+                    A BTech IT student specializing in Cloud Computing with hands-on AWS experience. I enjoy building scalable cloud solutions and aim to become a Cloud Solutions Architect.
+                </p>
+            </div>
+            <div class="profile-img-wrapper">
+                <img src="https://raw.githubusercontent.com/4002Deep63/weatherimages/main/WhatsApp_Image_2026-04-09_at_2.59.51_PM-removebg-preview.png" alt="Deep Lad" class="profile-img">
+            </div>
+        </header>
+
+        <section>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-code"></i> Technical Skills</h3>
+                    <div class="tech-skills-icon-grid">
+                        <div class="tech-skill-icon-box" style="color: #FF9900;">AWS</div>
+                        <div class="tech-skill-icon-box" style="color: #FCC624;">Linux</div>
+                        <div class="tech-skill-icon-box" style="color: #009639;">NGINX</div>
+                        <div class="tech-skill-icon-box" style="color: #E34F26;">Python</div>
+                        <div class="tech-skill-icon-box" style="color: #F05032;">Git</div>
+                        <div class="tech-skill-icon-box" style="color: #1572B6;">Net</div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-users"></i> Soft Skills</h3>
+                    <div class="skill-group">
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Time Management</span>
+                    </div>
+
+                    <h3><i class="fa-solid fa-screwdriver-wrench"></i> Skill Set</h3>
+                    <div class="skill-group">
+                        <span class="skill-tag">Cloud Deployment</span>
+                        <span class="skill-tag">S3 Hosting</span>
+                        <span class="skill-tag">EC2 Setup</span>
+                        <span class="skill-tag">Cloud Monitoring</span>
+                    </div>
+
+                    <h3><i class="fa-solid fa-language"></i> Languages</h3>
+                    <div class="skill-group">
+                        <span class="skill-tag">English</span>
+                        <span class="skill-tag">Hindi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: rgba(255,255,255,0.02);">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>AWS S3 Static Website</h3>
+                    <p>Hosted a responsive static website using AWS S3 cloud storage.</p>
+                    <ul>
+                        <li>Configured Bucket Policies</li>
+                        <li>Enabled Static Hosting</li>
+                    </ul>
+                    <span class="project-tech">AWS S3</span>
+                </div>
+                <div class="project-card">
+                    <h3>EC2 + NGINX Web Server</h3>
+                    <p>Deployed a live web server on an Ubuntu EC2 instance.</p>
+                    <ul>
+                        <li>Launched EC2 instances</li>
+                        <li>Secured SSH access</li>
+                    </ul>
+                    <span class="project-tech">AWS EC2, NGINX, Linux</span>
+                    <a href="https://github.com/4002Deep63/aws-ec2-nginx-website" target="_blank" class="btn-code"><i class="fa-brands fa-github"></i> View Code</a>
+                </div>
+                <div class="project-card">
+                    <h3>S3 + Lambda Automation</h3>
+                    <p>Built a serverless automation system triggered by S3 events.</p>
+                    <ul>
+                        <li>Event-driven triggers</li>
+                        <li>Python Lambda logic</li>
+                    </ul>
+                    <span class="project-tech">Lambda, S3, Python</span>
+                    <a href="https://github.com/4002Deep63/aws-s3-lambda-automation" target="_blank" class="btn-code"><i class="fa-brands fa-github"></i> View Code</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Professional Value</h2>
+            </div>
+            <div class="hire-me-content">
+                <div class="hire-me-text">
+                    <h3>Why Hire Me?</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">
+                        I am a passionate Cloud Computing enthusiast with hands-on experience in building and deploying AWS-based solutions. I focus on practical implementation and continuously enhance my skills in cloud infrastructure.
+                    </p>
+                    
+                    <span class="highlight-title" style="color: var(--accent-cyan); font-weight: 600; display: block; margin-top: 20px;">Key Highlights:</span>
+                    <ul class="hire-list">
+                        <li><i class="fa-solid fa-cloud"></i> Built cloud projects using AWS (S3, EC2, Lambda)</li>
+                        <li><i class="fa-solid fa-terminal"></i> Strong practical knowledge of AWS & Linux systems</li>
+                        <li><i class="fa-solid fa-graduation-cap"></i> 2-Month Hybrid Internship & 15+ Hour Upskilling Course</li>
+                        <li><i class="fa-solid fa-certificate"></i> Certified in LLM for Developers</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="highlight-title" style="color: var(--accent-cyan); font-weight: 600; display: block; margin-bottom: 10px;">Skills & Strengths:</span>
+                    <ul class="hire-list">
+                        <li><i class="fa-solid fa-bolt"></i> Strong problem-solving & analytical thinking</li>
+                        <li><i class="fa-solid fa-users-gear"></i> Adaptability in real-world environments</li>
+                        <li><i class="fa-solid fa-diagram-project"></i> Good understanding of scalable system design</li>
+                        <li><i class="fa-solid fa-sync"></i> Continuous learner with interest in DevOps</li>
+                    </ul>
+                    <p style="margin-top: 30px; font-weight: 700; color: var(--accent-cyan); text-align: center; font-size: 0.9rem;">
+                        Ready to contribute as a Cloud Engineer.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="contact-bar">
+            <a href="mailto:dsl04lad@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> dsl04lad@gmail.com</a>
+            <a href="tel:+918591850085" class="contact-item"><i class="fa-solid fa-phone"></i> +91 8591850085</a>
+            <a href="https://www.linkedin.com/in/deep-lad-8275783b3" target="_blank" class="contact-item"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/4002Deep63" target="_blank" class="contact-item"><i class="fa-brands fa-github"></i> GitHub</a>
+        </footer>
+    </div>
+
+</body>
+</html>
