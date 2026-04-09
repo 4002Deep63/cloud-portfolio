@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Lad | Cloud Computing Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -85,15 +85,16 @@
             margin-bottom: 30px;
         }
 
+        /* PROFILE IMAGE WITH LIGHTER CONTRAST */
         .profile-img-wrapper {
             position: relative;
             width: clamp(200px, 30vw, 350px);
             height: clamp(200px, 30vw, 350px);
             flex-shrink: 0;
-            /* Light contrast applied here */
-            background-color: #2a2a4a;
+            background: rgba(255, 255, 255, 0.05); /* Light contrast background */
             border-radius: 50%;
-            padding: 10px; /* Optional, for spacing */
+            padding: 12px;
+            box-shadow: 0 0 30px rgba(138, 112, 232, 0.1);
         }
 
         .profile-img {
@@ -102,7 +103,6 @@
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid var(--card-bg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         /* --- INFO & SKILLS --- */
@@ -135,29 +135,27 @@
             gap: 10px;
         }
 
-        /* Technical Skills Specific Grid */
+        /* UPDATED TECHNICAL SKILLS GRID (Left Hand Side) */
         .tech-skills-icon-grid {
             display: grid;
-            /* Updated grid for 6 boxes */
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 20px;
             margin-bottom: 10px;
         }
 
         .tech-skill-icon-box {
-            background-color: #12122b;
-            color: var(--text-white);
-            border-radius: 12px;
-            padding: 15px;
+            background-color: rgba(18, 18, 43, 0.5);
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1.5rem; /* Increased Font Size */
             display: flex;
             align-items: center;
             justify-content: center;
             aspect-ratio: 1 / 1;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
+            border: 1px solid var(--border-rgba);
         }
 
         .tech-skill-icon-box:hover {
@@ -167,6 +165,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
+        /* Right Side Skills Styling */
         .skill-group {
             display: flex;
             flex-wrap: wrap;
@@ -341,10 +340,7 @@
                 text-align: center;
             }
             .hero-text { margin: 0 auto 30px; }
-            .tech-skills-icon-grid {
-                /* For smaller screens, adjust grid to prevent overflow */
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .tech-skill-icon-box { font-size: 1.2rem; }
         }
 
         @media (max-width: 480px) {
